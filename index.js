@@ -27,5 +27,14 @@ app.get('/', (req, res) => {
     res.send('Welcome to the Greeny Backend API!');
 });
 
+// --- Start Server for Local Development ---
+// This block will only run on your local machine, not on Vercel
+if (process.env.NODE_ENV !== 'production') {
+    const PORT = process.env.PORT || 5000;
+    app.listen(PORT, () => {
+        console.log(`Server is running on http://localhost:${PORT}`);
+    });
+}
+
 // --- Export the app for Vercel ---
 module.exports = app;
