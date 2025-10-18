@@ -2,7 +2,7 @@
 const express = require('express');
 const router = express.Router();
 const Order = require('../models/order.js');
-const Product = require('../models/product.js');
+const Product = require('../models/Product.js');
 
 // @route   GET api/dashboard/stats
 // @desc    Get all dashboard statistics
