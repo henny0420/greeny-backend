@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 // FIX: The model file is lowercase 'category.js'
-const Category = require('../models/category.js');
+const Category = require('../models/Category.js');
 
 // @route   GET api/categories
 // @desc    Get all categories
