@@ -91,6 +91,19 @@ router.get('/offer/:tag', async (req, res) => {
 
 
 // --- READ (Single by ID - DYNAMIC, MUST BE LAST OF THE GETs) ---
+// router.get('/:id', async (req, res) => {
+//     try {
+//         const product = await Product.findById(req.params.id).populate('category');
+//         if (!product) {
+//             return res.status(404).json({ msg: 'Product not found' });
+//         }
+//         res.json(product);
+//     } catch (err) {
+//         console.error(err.message);
+//         res.status(500).send('Server Error');
+//     }
+// });
+
 router.get('/:id', async (req, res) => {
     try {
         const product = await Product.findById(req.params.id).populate('category');
@@ -100,6 +113,10 @@ router.get('/:id', async (req, res) => {
         res.json(product);
     } catch (err) {
         console.error(err.message);
+        // This checks if the ID format is invalid
+        if (err.kind === 'ObjectId') {
+            return res.status(404).json({ msg: 'Product not found' });
+        }
         res.status(500).send('Server Error');
     }
 });
