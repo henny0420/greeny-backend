@@ -12,14 +12,13 @@ const categorySchema = new mongoose.Schema({
         required: true 
     },
     category: {
-        type: mongoose.Schema.Types.ObjectId, // The type is now an ObjectId
-        ref: 'category', // This tells Mongoose it refers to the 'category' model
+        type: mongoose.Schema.Types.ObjectId, 
+        ref: 'category',
         required: true
     }
 
 }, { timestamps: true });
 
-// Use the safe method to define the model
 const Category = mongoose.models.category || mongoose.model('category', categorySchema);
 
 module.exports = Category;

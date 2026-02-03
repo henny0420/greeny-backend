@@ -4,8 +4,6 @@ const router = express.Router();
 const Order = require('../models/order.js');
 const Product = require('../models/Product.js');
 
-// @route   GET api/dashboard/stats
-// @desc    Get all dashboard statistics
 router.get('/stats', async (req, res) => {
     try {
         const today = new Date();
@@ -23,10 +21,10 @@ router.get('/stats', async (req, res) => {
         const recentOrders = await Order.find()
             .sort({ order_date: -1 })
             .limit(5)
-            .populate('user', 'name'); // Gets the user's name from the user collection
+            .populate('user', 'name');
 
         res.json({
-            todayRevenue: totalRevenue, // Note: This is total, not just today's for simplicity
+            todayRevenue: totalRevenue, 
             todayOrders,
             pendingOrders,
             totalProducts,

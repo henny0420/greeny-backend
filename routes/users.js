@@ -1,10 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
-const User = require('../models/user.js'); // Make sure we import the User model
+const User = require('../models/user.js');
 
-// @route   POST api/users/register
-// @desc    Register a new user
+
 router.post('/register', async (req, res) => {
     const { name, email, password } = req.body;
     try {
@@ -26,8 +25,7 @@ router.post('/register', async (req, res) => {
     }
 });
 
-// @route   POST api/users/login
-// @desc    Authenticate user & get user data
+
 router.post('/login', async (req, res) => {
     const { email, password } = req.body;
     try {
@@ -53,7 +51,6 @@ router.post('/login', async (req, res) => {
 
 router.get('/', async (req, res) => {
     try {
-        // Find all users with the role of 'customer'
         const customers = await User.find({ role: 'customer' }).select('-password');
         res.json(customers);
     } catch (err) {

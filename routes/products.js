@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const Product = require('../models/Product.js'); 
 
-// --- CREATE ---
 router.post('/', async (req, res) => {
     try {
         const productData = req.body;
@@ -25,7 +24,6 @@ router.post('/', async (req, res) => {
     }
 });
 
-// --- READ (All / Filtered) ---
 router.get('/', async (req, res) => {
     try {
         const query = {};
@@ -47,7 +45,6 @@ router.get('/', async (req, res) => {
 });
 
 
-// --- READ (Specific Routes - MUST BE BEFORE /:id) ---
 
 router.get('/by-category', async (req, res) => {
     try {
@@ -90,20 +87,6 @@ router.get('/offer/:tag', async (req, res) => {
 });
 
 
-// --- READ (Single by ID - DYNAMIC, MUST BE LAST OF THE GETs) ---
-// router.get('/:id', async (req, res) => {
-//     try {
-//         const product = await Product.findById(req.params.id).populate('category');
-//         if (!product) {
-//             return res.status(404).json({ msg: 'Product not found' });
-//         }
-//         res.json(product);
-//     } catch (err) {
-//         console.error(err.message);
-//         res.status(500).send('Server Error');
-//     }
-// });
-
 router.get('/:id', async (req, res) => {
     try {
         const product = await Product.findById(req.params.id).populate('category');
@@ -121,7 +104,6 @@ router.get('/:id', async (req, res) => {
     }
 });
 
-// --- UPDATE ---
 router.put('/:id', async (req, res) => {
     try {
         const product = await Product.findByIdAndUpdate(req.params.id, { $set: req.body }, { new: true }).populate('category');
@@ -135,7 +117,6 @@ router.put('/:id', async (req, res) => {
     }
 });
 
-// --- DELETE ---
 router.delete('/:id', async (req, res) => {
     try {
         const product = await Product.findByIdAndDelete(req.params.id);

@@ -33,8 +33,6 @@ userSchema.pre('save', async function(next) {
     next();
 });
 
-// THIS IS THE LINE THAT WAS LIKELY MISSING OR HAD A TYPO
 const User = mongoose.models.user || mongoose.model('user', userSchema);
 
-// This line can now correctly export the 'User' variable
 module.exports = User;

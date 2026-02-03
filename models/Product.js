@@ -10,7 +10,7 @@ const productSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    price: { // This will be our "regular_price"
+    price: { 
         type: Number,
         required: true
     },
@@ -21,15 +21,13 @@ const productSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-   // models/product.js
 
-// ... (other fields like name, description, etc.)
     category: {
-        type: mongoose.Schema.Types.ObjectId, // The type is now an ObjectId
-        ref: 'category', // This tells Mongoose it refers to the 'category' model
+        type: mongoose.Schema.Types.ObjectId, 
+        ref: 'category', 
         required: true
     },
-    rating: { // Added from your old table
+    rating: { 
         type: Number,
         default: 0
     },
@@ -37,11 +35,11 @@ const productSchema = new mongoose.Schema({
         type: Boolean,
         default: false
     },
-    is_popular: { // Added from your old table
+    is_popular: { 
         type: Boolean,
         default: false
     },
-    is_premium: { // We'll keep this one from our previous discussion
+    is_premium: { 
         type: Boolean,
         default: false
     },

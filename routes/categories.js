@@ -1,10 +1,7 @@
 const express = require('express');
 const router = express.Router();
-// FIX: The model file is lowercase 'category.js'
 const Category = require('../models/Category.js');
 
-// @route   GET api/categories
-// @desc    Get all categories
 router.get('/', async (req, res) => {
     try {
         const categories = await Category.find().sort({ name: 'asc' });
